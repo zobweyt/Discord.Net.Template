@@ -1,4 +1,4 @@
-# Discord.NET Template [![version](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://discordnet.dev/)  [![release](https://img.shields.io/github/release-date/zobweyt/Discord.NET-Template)](https://github.com/zobweyt/Discord.NET-Template)
+# Discord.NET Template [![version](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://discordnet.dev/)  [![downloads](https://img.shields.io/github/downloads/zobweyt/Discord.NET-Template/total)](https://github.com/zobweyt/Discord.NET-Template)
 
 <img src="https://user-images.githubusercontent.com/98274273/187032105-316cf322-c431-4a46-a14a-1de50123aa30.png" align="right" width="120" height="120">
 
