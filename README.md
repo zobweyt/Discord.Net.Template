@@ -7,16 +7,8 @@ This repository is fully maintained template for creating a Discord bot with **a
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#key-features">Key Features</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#key-features">Key Features</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
     <li>
       <a href="#advanced-configuration">Advanced Configuration</a>
       <ul>
@@ -24,7 +16,7 @@ This repository is fully maintained template for creating a Discord bot with **a
         <li><a href="#environment-variables">Environment Variables</a></li>
       </ul>
     </li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#contribution">Contribution</a></li>
   </ol>
 </details>
 
@@ -40,38 +32,19 @@ This repository is fully maintained template for creating a Discord bot with **a
 
 ## Getting started
 
-To get a local copy up, running and become fully familiar with configuration, follow these simple steps.
-
-
-
-### Prerequisites
-
-* [.NET 6.0](https://dotnet.microsoft.com/download).
-* [User Secrets](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows).
-* [Environment Variables](https://en.wikipedia.org/wiki/Environment_variable).
-
-
-
-### Installation
-
-1. Clone the repository:
-  ```sh
-  git clone https://github.com/Zobweyt/Gudgeon.git
-  ```
-2. Configure [appsettings.json](https://github.com/Zobweyt/Discord.NET-Template/blob/master/appsettings.json) and [appsettings.Development.json](https://github.com/Zobweyt/Discord.NET-Template/blob/master/appsettings.Development.json) files found in the main directory.
-
+To start using the template, clone the repository and place your token in the `appsettings.json` and `appsettings.Development.json` files found in the main directory.
 
 
 
 ## Advanced Configuration
 
-Json file is not fully secured so you can commit it to your repository by mistake. The topics below will familiarize you with all the ways to protect your `token` and `guild id`.
+Json files are not fully secured, so you may mistakenly commit them with token in your repository. The topics below will introduce you to all the ways to secure the token.
 
 
 
 ### User Secrets
 
-To configure user secrets on the local machine right click at **Project** > **Configure user secrets**, fill up secrets:
+User secrets are designed specifically for development. **They will not load** in `"DOTNET_ENVIRONMENT": "Production"`. To configure user secrets on the local machine right click at "**Project**" > "**Configure user secrets**", fill up the secrets:
 ```json
 {
   "Token": "",
@@ -83,26 +56,24 @@ To configure user secrets on the local machine right click at **Project** > **Co
 
 ### Environment Variables
 
-1. Open powershell or click `win+r`:
-  ```run
-  powershell
-  ```
-2. Go to the project executable directory:
+This topic is needed if you are running the template in `"DOTNET_ENVIRONMENT": "Production"`.
+
+1. Open powershell and navigate to the directory containing the project executable:
   ```sh
-  cd TEMPLATE\bin\Debug\net6.0
+  cd bot\bin\Debug\net6.0
   ```
-3. Setting up the environment variables:
+2. Set up the environment variables:
   ```sh
   $env:Token=""
   $env:DevGuild=0
   ```
-4. Run the project:
+3. Run the project:
   ```sh
-  .\EXECUTABLE.exe
+  .\bot.exe
   ```
+  
+  
+  
+## Contribution
 
-
-
-## License
-
-Distributed under the MIT License. See [LICENSE](https://github.com/Zobweyt/Discord.NET-Template/blob/master/LICENSE.txt) for more information.
+Feel free to open an issue, contribute or suggest new ideas to improve this repository!
