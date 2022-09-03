@@ -33,14 +33,13 @@ internal sealed partial class InteractionHandler : DiscordClientService
         await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
 
         await Client.WaitForReadyAsync(stoppingToken);
-        // Change bot activity here.
         await Client.SetGameAsync("Discord.NET");
         await RegisterCommandsAsync();
     }
 
     private async Task RegisterCommandsAsync()
     {
-        // If DOTNET_ENVIRONMENT application commands will be registered for DevGuild and global commands will be deleted.
+        // If "DOTNET_ENVIRONMENT": "Development" application commands will be registered to your development guild.
         if (_environment.IsDevelopment())
         {
             await Client.Rest.DeleteAllGlobalCommandsAsync();
@@ -48,7 +47,8 @@ internal sealed partial class InteractionHandler : DiscordClientService
             return;
         }
 
-        // Otherwise commands will register globally and DevGuild commands will be overwrited (takes up to hour).
+        // Otherwise commands will register globally.
+        // Remember that all global operations take up to an hour.
         await Client.Rest.BulkOverwriteGuildCommands(Array.Empty<ApplicationCommandProperties>(), _configuration.GetValue<ulong>("DevGuild"));
         await _service.RegisterCommandsGloballyAsync();
     }
