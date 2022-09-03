@@ -17,12 +17,11 @@ internal class Program
                     LogLevel = LogSeverity.Debug,
                     AlwaysDownloadUsers = true,
                     MessageCacheSize = 200,
-                    GatewayIntents = GatewayIntents.All // Enable in discord developer portal.
+                    GatewayIntents = GatewayIntents.All // Enable at https://discord.com/developers/applications.
                 };
 
-                // Storing variables in appsettings.json and appsettings.Development.json is not safe.
-                // Better use user-secrets for Development and environment variables for Production.
-                // You can find the full guide on the repository page.
+                // Json files are not fully secured, so you may mistakenly commit them with token in your repository.
+                // You can find the full guide about this topic at https://github.com/zobweyt/Discord.NET-Template#advanced-configuration.
                 config.Token = context.Configuration["Token"];
             })
             .UseInteractionService((context, config) =>
@@ -32,9 +31,7 @@ internal class Program
             })
             .ConfigureServices((context, services) =>
             {
-                // Add any other services right here.
-                services
-                .AddHostedService<InteractionHandler>();
+                services.AddHostedService<InteractionHandler>();
             })
             .Build();
 
