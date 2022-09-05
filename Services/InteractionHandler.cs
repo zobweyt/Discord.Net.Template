@@ -31,6 +31,6 @@ internal sealed partial class InteractionHandler : DiscordClientService
             .WithColor(Color.Red)
             .Build();
 
-        await context.Interaction.RespondAsync(embed: embed).ConfigureAwait(false); // Set false to avoid rate limits.
+        await context.Interaction.RespondAsync(embed: embed);
     }
 }

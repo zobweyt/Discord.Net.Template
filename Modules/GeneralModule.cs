@@ -23,15 +23,15 @@ public class GeneralModule : InteractionModuleBase<SocketInteractionContext>
 
     [SlashCommand("avatar", "Get a user avatar")]
     public async Task AvatarAsync(
-        [Summary("user", "The user to get avatar")] IGuildUser? user = null)
+        [Summary("user", "The user to get avatar")] IUser? user = null)
     {
         // If user was not specified or it is null, replace it with interaction executor.
-        user ??= Context.User as IGuildUser;
+        user ??= Context.User;
 
         // Build an embed to respond.
         var embed = new EmbedBuilder()
             .WithTitle($"{user.Username}#{user.Discriminator}")
-            .WithImageUrl((user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl()).Replace("size=128", "size=4096"))
+            .WithImageUrl(user.GetAvatarUrl(size: 4096) ?? user.GetDefaultAvatarUrl())
             .WithColor(Color.Blue)
             .Build();
 
