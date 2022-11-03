@@ -56,9 +56,9 @@ User secrets are designed specifically for development. **They will not load** i
 
 ### Environment Variables
 
-This topic is needed to read if you are running the template in production.
-To setup the environment variables open powershell and run the following commands:
+This topic is needed to read if you are running the template in production. To setup the environment variables open powershell and run the following commands:
 ```sh
+# The "bot" here is root directory of your application 
 # Switch to the directory containing the project executable
 cd bot\bin\Debug\net6.0
 
