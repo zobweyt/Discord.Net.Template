@@ -9,7 +9,6 @@ public class GeneralModule : InteractionModuleBase<SocketInteractionContext>
     [SlashCommand("latency", "Display bot latency")]
     public async Task LatencyAsync()
     {
-        // Get bot's latency (ms).
         int latency = Context.Client.Latency;
 
         var embed = new EmbedBuilder()

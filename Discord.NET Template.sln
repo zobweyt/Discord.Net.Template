@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.NET Template", "Discord.NET Template.csproj", "{A6F961D7-8A6A-453F-B4AB-FE86F2434030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.NET Template", "Template/Discord.NET Template.csproj", "{A6F961D7-8A6A-453F-B4AB-FE86F2434030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,7 +22,12 @@ internal class Program
 
                 // Json files are not fully secured, so you may mistakenly commit them with token in your repository.
                 // You can find the full guide about this topic at https://github.com/zobweyt/Discord.NET-Template#advanced-configuration.
-                config.Token = context.Configuration["Token"];
+                string? token = context.Configuration["Token"];
+
+                if (string.IsNullOrEmpty(token))
+                    throw new ArgumentNullException(nameof(token), "Token is null or empty. Specify it in your config.");
+
+                config.Token = token;
             })
             .UseInteractionService((context, config) =>
             {

@@ -25,13 +25,13 @@ internal sealed partial class InteractionHandler : DiscordClientService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        // Process the InteractionCreated payloads to execute Application commands.
+        // Process the interaction payloads to execute and handle application commands.
         Client.InteractionCreated += InteractionCreated;
-        // Process the command execution results.
         _service.InteractionExecuted += InteractionExecuted;
 
         await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
 
+        // Client must to be ready before doing any actions.
         await Client.WaitForReadyAsync(stoppingToken);
         await Client.SetGameAsync("Discord.NET");
         await RegisterCommandsAsync();
@@ -39,7 +39,7 @@ internal sealed partial class InteractionHandler : DiscordClientService
 
     private async Task RegisterCommandsAsync()
     {
-        // If "DOTNET_ENVIRONMENT": "Development" application commands will be registered to your development guild.
+        // If "DOTNET_ENVIRONMENT": "Development" commands will be registered to your development guild.
         if (_environment.IsDevelopment())
         {
             await Client.Rest.DeleteAllGlobalCommandsAsync();
