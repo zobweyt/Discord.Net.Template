@@ -52,4 +52,32 @@ internal sealed partial class InteractionHandler : DiscordClientService
         await Client.Rest.BulkOverwriteGuildCommands(Array.Empty<ApplicationCommandProperties>(), _configuration.GetValue<ulong>("DevGuild"));
         await _service.RegisterCommandsGloballyAsync();
     }
+
+    private async Task InteractionCreated(SocketInteraction interaction)
+    {
+        try
+        {
+            var context = new SocketInteractionContext(Client, interaction);
+            await _service.ExecuteCommandAsync(context, _provider);
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError(exception, "Exception occurred whilst attempting to handle interaction.");
+        }
+    }
+
+    private async Task InteractionExecuted(ICommandInfo command, IInteractionContext context, IResult result)
+    {
+        if (result.IsSuccess)
+            return;
+
+        // Handle error execution result here.
+        var embed = new EmbedBuilder()
+            .WithTitle("Error!")
+            .WithDescription(result.ErrorReason)
+            .WithColor(Color.Red)
+            .Build();
+
+        await context.Interaction.RespondAsync(embed: embed);
+    }
 }
