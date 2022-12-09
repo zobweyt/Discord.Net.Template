@@ -15,9 +15,12 @@ internal class Program
                 config.SocketConfig = new DiscordSocketConfig
                 {
                     LogLevel = LogSeverity.Debug,
-                    AlwaysDownloadUsers = true,
-                    MessageCacheSize = 200,
-                    GatewayIntents = GatewayIntents.All // Enable at https://discord.com/developers/applications.
+                    // Enable the setting below if you use GatewayIntents.GuildMembers
+                    AlwaysDownloadUsers = false,
+                    // The setting below allows application to get the reactions or content of a message.
+                    // Our template does not have such functionality, but that may be useful for you.
+                    MessageCacheSize = 0,
+                    GatewayIntents = GatewayIntents.AllUnprivileged // Configure more at https://discord.com/developers/applications.
                 };
 
                 // Json files are not fully secured, so you may mistakenly commit them with token in your repository.
