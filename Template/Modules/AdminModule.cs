@@ -10,7 +10,7 @@ public class AdminModule : InteractionModuleBase<SocketInteractionContext>
     [RequireBotPermission(ChannelPermission.ManageMessages)]
     [SlashCommand("clean", "Delete multiple channel messages")]
     public async Task CleanAsync(
-        [Summary("amount", $"The number of messages to clean up.")][MinValue(2), MaxValue(100)] int amount)
+        [Summary("amount", "The number of messages to clean up.")][MinValue(2), MaxValue(100)] int amount)
     {
         if (Context.Channel is not ITextChannel channel)
             return;
