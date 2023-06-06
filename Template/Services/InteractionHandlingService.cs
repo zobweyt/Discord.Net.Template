@@ -4,6 +4,8 @@ using Discord.Addons.Hosting;
 using Discord.Addons.Hosting.Util;
 using Discord.Interactions;
 using Discord.WebSocket;
+using Template.Appearance.Stylization;
+using Template.Extensions.Builders;
 
 namespace Template.Services;
 
@@ -70,14 +72,12 @@ internal sealed partial class InteractionHandlingService : DiscordClientService
 
     private async Task InteractionExecuted(ICommandInfo command, IInteractionContext context, IResult result)
     {
-        if (result.IsSuccess)
+        if (string.IsNullOrEmpty(result.ErrorReason))
             return;
 
-        // Handle error execution result here.
-        var embed = new EmbedBuilder()
-            .WithTitle("Error!")
+        Embed embed = new EmbedBuilder()
+            .WithStyle(result.IsSuccess ? new SuccessEmbedStyle() : new FailureEmbedStyle())
             .WithDescription(result.ErrorReason)
-            .WithColor(Color.Red)
             .Build();
 
         await context.Interaction.RespondAsync(embed: embed);
