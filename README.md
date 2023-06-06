@@ -27,6 +27,7 @@ This repository is a fully maintained template for creating an advanced Discord.
 * Easy configuration such as [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0).
 * Completely maintained template.
 * Contains premade slash commands.
+* Provides solutions for convenient development.
 
 
 
