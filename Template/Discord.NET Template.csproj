@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>653b9ddf-611e-4bd6-b4ee-4719c9837cf7</UserSecretsId>
 		<RootNamespace>Template</RootNamespace>
-        <Version>1.0.5</Version>
+        <Version>1.1.0</Version>
   </PropertyGroup>
 
 	<ItemGroup>
