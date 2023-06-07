@@ -18,8 +18,6 @@ var host = Host.CreateDefaultBuilder()
             LogGatewayIntentWarnings = false
         };
 
-        // Json files are not fully secured, so you may mistakenly commit them with token in your repository.
-        // You can find the full guide about this topic at https://github.com/zobweyt/Discord.NET-Template#advanced-configuration.
         string? token = context.Configuration["Token"];
 
         if (string.IsNullOrEmpty(token))

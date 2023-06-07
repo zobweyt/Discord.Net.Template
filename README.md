@@ -1,78 +1,87 @@
-# Discord.NET Template [![dnet_version](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://discordnet.dev/)  [![issues](https://img.shields.io/github/issues/zobweyt/Discord.NET-Template)](https://github.com/zobweyt/Discord.NET-Template/issues)
+# Discord.NET Template [![dnet_version](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://discordnet.dev/) [![issues](https://img.shields.io/github/issues/zobweyt/Discord.NET-Template)](https://github.com/zobweyt/Discord.NET-Template/issues)
 
 <img src="https://user-images.githubusercontent.com/98274273/187032105-316cf322-c431-4a46-a14a-1de50123aa30.png" align="right" width="120" height="120">
 
-This repository is a fully maintained template for creating an advanced Discord.NET bot with slash commands using [Discord.Addons.Hosting](https://www.nuget.org/packages/Discord.Addons.Hosting/).
+This repository is a fully maintained template for creating an advanced [Discord.NET](https://github.com/discord-net/Discord.Net) application using the [interaction framework](https://discordnet.dev/faq/int_framework/framework.html) and [Discord.Addons.Hosting](https://github.com/Hawxy/Discord.Addons.Hosting).
 
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#key-features">Key Features</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
     <li>
-      <a href="#advanced-configuration">Advanced Configuration</a>
+      <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#user-secrets">User Secrets</a></li>
-        <li><a href="#environment-variables">Environment Variables</a></li>
+        <li><a href="#step-1--clone-the-repository">Step 1 — Clone the repository</a></li>
+        <li><a href="#step-2--manage-user-secrets-cli">Step 2 — Manage user secrets CLI</a></li>
+        <li><a href="#step-3--run-the-dotnet-application">Step 3 — Run the dotnet application</a></li>
       </ul>
     </li>
-    <li><a href="#contribution">Contribution</a></li>
+    <li>
+      <a href="#contribution">Contribution</a>
+      <ul>
+        <li><a href="#documentation">Documentation</a></li>
+      </ul>
+    </li>
   </ol>
 </details>
 
 
 
 ## Key Features
-* Advanced console logging support.
-* Easy configuration such as [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0).
-* Completely maintained template.
-* Contains premade slash commands.
-* Provides solutions for convenient development.
+* Easy configuration such as [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core).
+* Contains abstract premade interaction commands.
+* Provides solutions for convenient bot development.
 
 
 
-## Getting started
+## Getting Started
 
-To start using the template, clone the repository and configure the [appsettings.json](https://github.com/zobweyt/Discord.NET-Template/blob/master/appsettings.json) and [appsettings.Development.json](https://github.com/zobweyt/Discord.NET-Template/blob/master/appsettings.Development.json) files found in the main directory.
-
-
-
-## Advanced Configuration
-
-Json files are not fully secured, so you may mistakenly commit them with token in your repository. The topics below will introduce you to all the ways to secure your configuration.
+To start using the template, open a command prompt and follow these instructions:
 
 
 
-### User Secrets
+### Step 1 — Clone the repository
 
-User secrets are designed specifically for development. **They will not load** in `"DOTNET_ENVIRONMENT": "Production"`. To configure user secrets on the local machine right click at "**Project**" > "**Configure user secrets**" then fill up the secrets:
-```json
-{
-  "Token": "",
-  "DevGuild": 0,
-}
-```
+Get a local copy and navigate to the cloned repository:
 
-
-
-### Environment Variables
-
-This topic is needed to read if you are running the template in production. To setup the environment variables open powershell and run the following commands:
 ```sh
-# The "bot" here is root directory of your application 
-# Switch to the directory containing the project executable
-cd bot\bin\Debug\net6.0
-
-# Set up the environment variables
-$env:Token=""
-$env:DevGuild=0
-
-# Run the project
-.\bot.exe
+git clone https://github.com/zobweyt/Discord.NET-Template.git Template
+cd Template/Template
 ```
 
 
-  
+
+### Step 2 — Manage user secrets CLI
+
+Reduce the risk of accidentally adding secrets into source control:
+
+```sh
+dotnet user-secrets set Token ""
+dotnet user-secrets set DevGuild 0
+```
+
+
+
+### Step 3 — Run the dotnet application
+
+
+```
+dotnet run
+```
+
+> **Note:**
+Instead of using `dotnet run` to run application in production, create a deployment using the `dotnet publish` command and [deploy](https://discordnet.dev/guides/deployment/deployment.html) the published output.
+
+
+
 ## Contribution
 
-Feel free to open an issue, contribute or suggest new ideas to improve this repository!
+We welcome contributions to enhance this repository's functionality and usability! When contributing new features, please keep in mind that documentation is a critical component of any successful project.
+
+### Documentation
+
+All new features must be accompanied by detailed [documentation comments](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/).
+
+Please ensure that the documentation is kept up-to-date with any changes made to the feature. This will help ensure that the project remains accessible and usable for all users.
+
+Thank you for your contributions!
