@@ -1,17 +1,23 @@
 ﻿using Discord.Interactions;
 using Discord;
+using Fergun.Interactive;
 using System.Diagnostics;
 using System.Reflection;
+using Template.Appearance;
+using Template.Entities;
 
 namespace Template.Modules;
 
-public class GeneralModule : InteractionModuleBase<SocketInteractionContext>
+public class GeneralModule : ModuleBase
 {
-    [SlashCommand("info", "Displays information about the bot.")]
+    public GeneralModule(ILogger<InteractionModuleBase<SocketInteractionContext>> logger, InteractiveService interactive) 
+        : base(logger, interactive) { }
+
+    [SlashCommand("info", "Displays information related to the application.")]
     public async Task InfoAsync()
     {
         await DeferAsync();
-        
+
         string location = Assembly.GetExecutingAssembly().Location;
         FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(location);
         IApplication application = await Context.Client.GetApplicationInfoAsync();
@@ -23,7 +29,7 @@ public class GeneralModule : InteractionModuleBase<SocketInteractionContext>
             .AddField("Latency", Context.Client.Latency, true)
             .AddField("Version", fileVersionInfo.ProductVersion, true)
             .WithThumbnailUrl(application.IconUrl)
-            .WithColor(Color.Blue)
+            .WithColor(Colors.Primary)
             .Build();
 
         await FollowupAsync(embed: embed);

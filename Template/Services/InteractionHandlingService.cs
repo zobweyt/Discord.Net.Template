@@ -9,7 +9,7 @@ using Template.Extensions.Builders;
 
 namespace Template.Services;
 
-internal sealed partial class InteractionHandlingService : DiscordClientService
+internal sealed class InteractionHandlingService : DiscordClientService
 {
     private readonly IServiceProvider _provider;
     private readonly InteractionService _service;
