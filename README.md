@@ -45,8 +45,8 @@ To start using the template, open a command prompt and follow these instructions
 Get a local copy and navigate to the cloned repository:
 
 ```sh
-git clone https://github.com/zobweyt/Discord.NET-Template.git Template
-cd Template/Template
+git clone https://github.com/zobweyt/Discord.Net.Template.git
+cd Discord.Net.Template/Template
 ```
 
 
