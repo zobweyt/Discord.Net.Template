@@ -8,17 +8,17 @@ namespace Template.Entities;
 public enum SnowflakeEntityType
 {
     /// <summary>
-    /// Represents a user.
+    /// Represents a <see cref="IUser"/> type.
     /// </summary>
     User,
 
     /// <summary>
-    /// Represents a channel.
+    /// Represents a <see cref="IChannel"/> type.
     /// </summary>
     Channel,
 
     /// <summary>
-    /// Represents a guild.
+    /// Represents a <see cref="IGuild"/> type.
     /// </summary>
     Guild
 }
