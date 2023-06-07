@@ -10,12 +10,12 @@ var host = Host.CreateDefaultBuilder()
         config.SocketConfig = new DiscordSocketConfig
         {
             LogLevel = LogSeverity.Debug,
-            // Enable the setting below if you use GatewayIntents.GuildMembers
+            // Enable the setting below to cache users.
             AlwaysDownloadUsers = false,
             // The setting below allows application to get the reactions or content of a message.
-            // Our template does not have such functionality, but that may be useful for you.
             MessageCacheSize = 0,
-            GatewayIntents = GatewayIntents.AllUnprivileged, // Configure more at https://discord.com/developers/applications.
+            // Configure more privileged intents at https://discord.com/developers/applications.
+            GatewayIntents = GatewayIntents.AllUnprivileged,
             LogGatewayIntentWarnings = false
         };
 
