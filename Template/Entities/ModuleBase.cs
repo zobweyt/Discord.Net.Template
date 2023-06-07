@@ -2,6 +2,7 @@ using Discord;
 using Discord.Interactions;
 using Fergun.Interactive;
 using Template.Attributes;
+using Template.Data;
 
 namespace Template.Entities;
 
@@ -26,13 +27,19 @@ public abstract class ModuleBase : InteractionModuleBase<SocketInteractionContex
     protected readonly InteractiveService _interactive;
 
     /// <summary>
+    /// The database context used by this module.
+    /// </summary>
+    protected DatabaseContext _databaseContext { get; init; }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="ModuleBase"/> class.
     /// </summary>
     /// <param name="logger">The logger used by this module.</param>
     /// <param name="interactive">The interactive service used by this module.</param>
-    protected ModuleBase(ILogger<InteractionModuleBase<SocketInteractionContext>> logger, InteractiveService interactive)
+    protected ModuleBase(ILogger<InteractionModuleBase<SocketInteractionContext>> logger, InteractiveService interactive, DatabaseContext databaseContext)
     {
         _logger = logger;
         _interactive = interactive;
+        _databaseContext = databaseContext;
     }
 }

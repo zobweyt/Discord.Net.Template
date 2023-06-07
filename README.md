@@ -11,9 +11,10 @@ This repository is a fully maintained template for creating an advanced [Discord
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#step-1--clone-the-repository">Step 1 — Clone the repository</a></li>
-        <li><a href="#step-2--manage-user-secrets-cli">Step 2 — Manage user secrets CLI</a></li>
-        <li><a href="#step-3--run-the-dotnet-application">Step 3 — Run the dotnet application</a></li>
+        <li><a href="#step-1--clone-the-repository">Step 1 — Clone the repository *</a></li>
+        <li><a href="#step-2--manage-user-secrets-cli">Step 2 — Manage user secrets CLI *</a></li>
+        <li><a href="#step-3--apply-database-migrations">Step 3 — Apply database migrations</a></li>
+        <li><a href="#step-4--run-the-dotnet-application">Step 4 — Run the dotnet application *</a></li>
       </ul>
     </li>
     <li>
@@ -40,7 +41,7 @@ To start using the template, open a command prompt and follow these instructions
 
 
 
-### Step 1 — Clone the repository
+### Step 1 — Clone the repository *
 
 Get a local copy and navigate to the cloned repository:
 
@@ -51,22 +52,35 @@ cd Discord.Net.Template/Template
 
 
 
-### Step 2 — Manage user secrets CLI
+### Step 2 — Manage user secrets CLI *
 
 Reduce the risk of accidentally adding secrets into source control:
 
 ```sh
 dotnet user-secrets set Token ""
 dotnet user-secrets set DevGuild 0
+dotnet user-secrets set ConnectionStrings:Default ""
 ```
 
 
 
-### Step 3 — Run the dotnet application
+### Step 3 — Apply database migrations
+
+You will need to have [MySQL installed](https://dev.mysql.com/downloads/installer/) on your computer as the database provider.
 
 
 ```
-dotnet run
+cd ..
+dotnet ef database update --startup-project Template --project Template.Data
+```
+
+
+
+### Step 4 — Run the dotnet application *
+
+
+```
+dotnet run --project Template
 ```
 
 > **Note:**

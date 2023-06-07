@@ -31,7 +31,11 @@ internal sealed class InteractionHandlingService : DiscordClientService
         Client.InteractionCreated += InteractionCreated;
         _service.InteractionExecuted += InteractionExecuted;
 
-        await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
+        // Required to use the database context in modules.
+        // May be fixed by Discord.NET library in the future.
+        await using var scope = _provider.CreateAsyncScope();
+
+        await _service.AddModulesAsync(Assembly.GetEntryAssembly(), scope.ServiceProvider);
 
         // Client must to be ready before doing any actions.
         await Client.WaitForReadyAsync(stoppingToken);

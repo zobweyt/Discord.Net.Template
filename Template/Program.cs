@@ -2,6 +2,8 @@
 using Discord.Addons.Hosting;
 using Discord.WebSocket;
 using Fergun.Interactive;
+using Microsoft.EntityFrameworkCore;
+using Template.Data;
 using Template.Services;
 
 var host = Host.CreateDefaultBuilder()
@@ -42,6 +44,14 @@ var host = Host.CreateDefaultBuilder()
 
         services.AddSingleton(interactiveConfig);
         services.AddSingleton<InteractiveService>();
+
+        string? connectionString = context.Configuration.GetConnectionString("Default");
+
+        if (string.IsNullOrEmpty(connectionString))
+            throw new InvalidOperationException("The database connection string must be specified.");
+
+        ServerVersion serverVersion = ServerVersion.AutoDetect(connectionString);
+        services.AddDbContext<DatabaseContext>(options => options.UseMySql(connectionString, serverVersion));
 
         services.AddHostedService<InteractionHandlingService>();
     })

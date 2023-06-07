@@ -4,14 +4,15 @@ using Fergun.Interactive;
 using System.Diagnostics;
 using System.Reflection;
 using Template.Appearance;
+using Template.Data;
 using Template.Entities;
 
 namespace Template.Modules;
 
 public class GeneralModule : ModuleBase
 {
-    public GeneralModule(ILogger<InteractionModuleBase<SocketInteractionContext>> logger, InteractiveService interactive) 
-        : base(logger, interactive) { }
+    public GeneralModule(ILogger<InteractionModuleBase<SocketInteractionContext>> logger, InteractiveService interactive, DatabaseContext databaseContext)
+        : base(logger, interactive, databaseContext) { }
 
     [SlashCommand("info", "Displays information related to the application.")]
     public async Task InfoAsync()

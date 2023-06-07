@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>653b9ddf-611e-4bd6-b4ee-4719c9837cf7</UserSecretsId>
 		<RootNamespace>Template</RootNamespace>
-        <Version>1.2.0-beta.1</Version>
+        <Version>1.2.0</Version>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -18,8 +18,17 @@
 		<PackageReference Include="Discord.Net.Extensions" Version="1.2.1" />
 		<PackageReference Include="Discord.Net.Interactions" Version="3.10.0" />
 		<PackageReference Include="Fergun.Interactive" Version="1.7.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+	</ItemGroup>
+
+    <ItemGroup>
+		<ProjectReference Include="..\Template.Data\Template.Data.csproj" />
 	</ItemGroup>
 
 </Project>
