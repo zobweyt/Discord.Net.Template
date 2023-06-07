@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Addons.Hosting;
 using Discord.WebSocket;
+using Fergun.Interactive;
 using Template.Services;
 
 var host = Host.CreateDefaultBuilder()
@@ -32,6 +33,16 @@ var host = Host.CreateDefaultBuilder()
     })
     .ConfigureServices((context, services) =>
     {
+        InteractiveConfig interactiveConfig = new()
+        {
+            LogLevel = LogSeverity.Debug,
+            DeferStopPaginatorInteractions = true,
+            DefaultTimeout = TimeSpan.FromMinutes(5)
+        };
+
+        services.AddSingleton(interactiveConfig);
+        services.AddSingleton<InteractiveService>();
+
         services.AddHostedService<InteractionHandlingService>();
     })
     .Build();
