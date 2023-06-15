@@ -55,9 +55,17 @@ internal sealed class InteractionHandlingService : DiscordClientService
             return;
         }
 
+        if (devGuildId != 0)
+        {
+            await Client.Rest.BulkOverwriteGuildCommands(Array.Empty<ApplicationCommandProperties>(), devGuildId);
+        }
+        else
+        {
+            Logger.LogWarning("Make sure to define the 'DevGuild' in the configuration to prevent duplicate application commands.");
+        }
+
         // Otherwise commands will register globally.
         // Remember that all global operations take up to an hour.
-        await Client.Rest.BulkOverwriteGuildCommands(Array.Empty<ApplicationCommandProperties>(), devGuildId);
         await _service.RegisterCommandsGloballyAsync();
     }
 
