@@ -66,13 +66,15 @@ dotnet user-secrets set ConnectionStrings:Default ""
 
 ### Step 3 — Apply database migrations
 
-You will need to have [MySQL installed](https://dev.mysql.com/downloads/installer/) on your computer as the database provider.
-
+Navigate to the solution root directory and update the database:
 
 ```
 cd ..
 dotnet ef database update --startup-project Template --project Template.Data
 ```
+
+> **Warning:**
+To use the database, you must have [MySQL installed](https://dev.mysql.com/downloads/installer/) on your computer as the database provider.
 
 
 
