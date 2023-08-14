@@ -1,4 +1,4 @@
-﻿using Discord;
+using Discord;
 using Discord.Addons.Hosting;
 using Discord.WebSocket;
 using Fergun.Interactive;
@@ -7,6 +7,11 @@ using Template.Data;
 using Template.Services;
 
 var host = Host.CreateDefaultBuilder()
+    .ConfigureServices((context, services) =>
+    {
+        services.AddOptions<LinksOptions>().BindConfiguration(LinksOptions.Links);
+        services.AddOptions<StartupOptions>().BindConfiguration(StartupOptions.Startup);
+    })
     .ConfigureDiscordHost((context, config) =>
     {
         config.SocketConfig = new DiscordSocketConfig
@@ -21,12 +26,7 @@ var host = Host.CreateDefaultBuilder()
             LogGatewayIntentWarnings = false
         };
 
-        string? token = context.Configuration["Token"];
-
-        if (string.IsNullOrEmpty(token))
-            throw new ArgumentNullException(nameof(token), "Token is null or empty. Specify it in your config.");
-
-        config.Token = token;
+        config.Token = context.Configuration.GetSection(StartupOptions.Startup).Get<StartupOptions>().Token;
     })
     .UseInteractionService((context, config) =>
     {
