@@ -1,6 +1,6 @@
 using Discord.Interactions;
 
-namespace Template.Entities;
+namespace Template;
 
 /// <summary>
 /// Represents the result of an interaction command used to encapsulate the result of an
@@ -24,10 +24,7 @@ public class InteractionResult : RuntimeResult
     /// <returns>
     /// A new instance of the <see cref="InteractionResult"/> with the specified message.
     /// </returns>
-    public static InteractionResult FromSuccess(string? message = null)
-    {
-        return new(null, message ?? string.Empty);
-    }
+    public static InteractionResult FromSuccess(string? message = null) => new(null, message ?? string.Empty);
 
     /// <summary>
     /// Creates an unsuccessful interaction result with the specified error and message.
@@ -37,8 +34,5 @@ public class InteractionResult : RuntimeResult
     /// A new instance of the <see cref="InteractionResult"/> with the
     /// <see cref="InteractionCommandError.Unsuccessful"/> code and message.
     /// </returns>
-    public static InteractionResult FromError(string message)
-    {
-        return new(InteractionCommandError.Unsuccessful, message);
-    }
+    public static InteractionResult FromError(string message) => new(InteractionCommandError.Unsuccessful, message);
 }

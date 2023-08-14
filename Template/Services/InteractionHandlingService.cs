@@ -4,8 +4,7 @@ using Discord.Addons.Hosting;
 using Discord.Addons.Hosting.Util;
 using Discord.Interactions;
 using Discord.WebSocket;
-using Template.Appearance.Stylization;
-using Template.Extensions.Builders;
+using Microsoft.Extensions.Options;
 
 namespace Template.Services;
 
@@ -14,58 +13,53 @@ internal sealed class InteractionHandlingService : DiscordClientService
     private readonly IServiceProvider _provider;
     private readonly InteractionService _service;
     private readonly IHostEnvironment _environment;
-    private readonly IConfiguration _configuration;
+    private readonly ulong _testingGuildId;
 
-    public InteractionHandlingService(DiscordSocketClient client, ILogger<DiscordClientService> logger, IServiceProvider provider, InteractionService service, IHostEnvironment environment, IConfiguration configuration)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InteractionHandlingService"/>.
+    /// </summary>
+    /// <param name="client">The Discord socket client used by this service.</param>
+    /// <param name="logger">The logger used by this service.</param>
+    /// <param name="provider">The service provider used by this service.</param>
+    /// <param name="service">The interaction service used by this service.</param>
+    /// <param name="environment">The host environment used by this service.</param>
+    /// <param name="options">The options used by this service.</param>
+    public InteractionHandlingService(DiscordSocketClient client, ILogger<DiscordClientService> logger, IServiceProvider provider, InteractionService service, IHostEnvironment environment, IOptions<StartupOptions> options)
         : base(client, logger)
     {
         _provider = provider;
         _service = service;
         _environment = environment;
-        _configuration = configuration;
+        _testingGuildId = options.Value.TestingGuildId;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        // Process the interaction payloads to execute and handle application commands.
         Client.InteractionCreated += InteractionCreated;
         _service.InteractionExecuted += InteractionExecuted;
 
-        // Required to use the database context in modules.
-        // May be fixed by Discord.NET library in the future.
         await using var scope = _provider.CreateAsyncScope();
 
         await _service.AddModulesAsync(Assembly.GetEntryAssembly(), scope.ServiceProvider);
 
-        // Client must to be ready before doing any actions.
         await Client.WaitForReadyAsync(stoppingToken);
-        await Client.SetGameAsync("Discord.NET");
         await RegisterCommandsAsync();
     }
 
     private async Task RegisterCommandsAsync()
     {
-        ulong devGuildId = _configuration.GetValue<ulong>("DevGuild");
-
-        // If "DOTNET_ENVIRONMENT": "Development" commands will be registered to your development guild.
         if (_environment.IsDevelopment())
         {
             await Client.Rest.DeleteAllGlobalCommandsAsync();
-            await _service.RegisterCommandsToGuildAsync(devGuildId);
+            await _service.RegisterCommandsToGuildAsync(_testingGuildId);
             return;
         }
 
-        if (devGuildId != 0)
-        {
-            await Client.Rest.BulkOverwriteGuildCommands(Array.Empty<ApplicationCommandProperties>(), devGuildId);
-        }
+        if (_testingGuildId != 0)
+            await Client.Rest.BulkOverwriteGuildCommands(Array.Empty<ApplicationCommandProperties>(), _testingGuildId);
         else
-        {
-            Logger.LogWarning("Make sure to define the 'DevGuild' in the configuration to prevent duplicate application commands.");
-        }
+            Logger.LogWarning("Potential duplication of application commands detected.");
 
-        // Otherwise commands will register globally.
-        // Remember that all global operations take up to an hour.
         await _service.RegisterCommandsGloballyAsync();
     }
 
@@ -87,8 +81,8 @@ internal sealed class InteractionHandlingService : DiscordClientService
         if (string.IsNullOrEmpty(result.ErrorReason))
             return;
 
-        Embed embed = new EmbedBuilder()
-            .WithStyle(result.IsSuccess ? new SuccessEmbedStyle() : new FailureEmbedStyle())
+        var embed = new EmbedBuilder()
+            .WithStyle(result.IsSuccess ? new SuccessfulEmbedStyle() : new UnsuccessfulEmbedStyle())
             .WithDescription(result.ErrorReason)
             .Build();
 

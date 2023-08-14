@@ -1,7 +1,6 @@
-using Template.Entities;
 using Discord;
 
-namespace Template.Extensions.Builders;
+namespace Template;
 
 /// <summary>
 /// Provides extension methods for <see cref="EmbedBuilder"/>.
@@ -13,17 +12,12 @@ public static class EmbedBuilderExtensions
     /// </summary>
     /// <param name="builder">The current builder.</param>
     /// <param name="style">An <see cref="EmbedStyle"/> to apply.</param>
-    /// <param name="name">The <see cref="EmbedStyle.Name"/> or style name by default.</param>
     /// <returns>The current builder instance with the style applied.</returns>
-    public static EmbedBuilder WithStyle(this EmbedBuilder builder, EmbedStyle style, string? name = null)
+    public static EmbedBuilder WithStyle(this EmbedBuilder builder, EmbedStyle style)
     {
-        style.Apply(name);
-
         builder
-            .WithAuthor(author =>
-            {
-                author.WithName(style.Name).WithIconUrl(style.IconUrl);
-            })
+            .WithAuthor(style.Name, style.IconUrl)
+            .WithFooter(style.Footer)
             .WithColor(style.Color);
 
         return builder;

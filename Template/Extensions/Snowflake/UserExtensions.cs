@@ -1,19 +1,16 @@
 using Discord;
 
-namespace Template.Extensions;
+namespace Template;
 
 /// <summary>
 /// Provides extension methods for <see cref="IUser"/>.
 /// </summary>
-public static class IUserExtensions
+public static class UserExtensions
 {
     /// <summary>
     /// Gets avatar URL or the default one.
     /// </summary>
     /// <param name="user">The user to get avatar URL.</param>
     /// <returns>The avatar URL.</returns>
-    public static string GetAvatarOrDefaultUrl(this IUser user)
-    {
-        return user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl();
-    }
+    public static string GetDisplayAvatarUrl(this IUser user) => user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl();
 }

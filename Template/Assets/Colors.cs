@@ -1,6 +1,6 @@
 ﻿using Discord;
 
-namespace Template.Appearance;
+namespace Template;
 
 /// <summary>
 /// Represents a constant set of predefined <see cref="Color"/> values.

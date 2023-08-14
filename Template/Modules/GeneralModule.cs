@@ -1,24 +1,23 @@
 ﻿using Discord.Interactions;
 using Discord;
-using Fergun.Interactive;
 using System.Diagnostics;
 using System.Reflection;
-using Template.Appearance;
-using Template.Data;
-using Template.Entities;
+using Microsoft.Extensions.Options;
 
 namespace Template.Modules;
 
 public class GeneralModule : ModuleBase
 {
-    public GeneralModule(ILogger<InteractionModuleBase<SocketInteractionContext>> logger, InteractiveService interactive, DatabaseContext databaseContext)
-        : base(logger, interactive, databaseContext) { }
+    private readonly LinksOptions _links;
 
-    [SlashCommand("info", "Displays information related to the application.")]
-    public async Task InfoAsync()
+    public GeneralModule(IOptions<LinksOptions> links)
     {
-        await DeferAsync();
+        _links = links.Value;
+    }
 
+    [SlashCommand("about", "Displays information about the application.")]
+    public async Task AboutAsync()
+    {
         string location = Assembly.GetExecutingAssembly().Location;
         FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(location);
         IApplication application = await Context.Client.GetApplicationInfoAsync();
@@ -33,6 +32,11 @@ public class GeneralModule : ModuleBase
             .WithColor(Colors.Primary)
             .Build();
 
-        await FollowupAsync(embed: embed);
+        var components = new ComponentBuilder()
+            .WithButton("Join", null, ButtonStyle.Link, Emotes.Logos.Discord, _links.Discord)
+            .WithButton("Contribute", null, ButtonStyle.Link, Emotes.Logos.Github, _links.Github)
+            .Build();
+
+        await FollowupAsync(embed: embed, components: components);
     }
 }

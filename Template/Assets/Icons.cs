@@ -1,4 +1,4 @@
-﻿namespace Template.Appearance;
+﻿namespace Template;
 
 /// <summary>
 /// Represents a constant set of predefined icons.
@@ -8,10 +8,10 @@ public static class Icons
     /// <summary>
     /// The icon used to indicate a success state.
     /// </summary>
-    public const string Success = "https://i.ibb.co/QK4hBhN/success.png";
+    public const string Check = "https://cdn.discordapp.com/emojis/1124759309033689229.png";
 
     /// <summary>
     /// The icon used to indicate an error state.
     /// </summary>
-    public const string Failure = "https://i.ibb.co/S5XjDff/failure.png";
+    public const string Cross = "https://cdn.discordapp.com/emojis/1124759305879552030.png";
 }
