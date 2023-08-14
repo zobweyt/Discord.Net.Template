@@ -1,21 +1,9 @@
 ﻿{
   "profiles": {
-    "Development": {
+    "Template": {
       "commandName": "Project",
       "environmentVariables": {
-        "DOTNET_ENVIRONMENT": "Development",
-        "Logging:LogLevel:Default": "Debug",
-        "Logging:LogLevel:Microsoft": "Warning",
-        "Logging:LogLevel:Microsoft.Hosting.Lifetime": "Information"
-      }
-    },
-    "Production": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "DOTNET_ENVIRONMENT": "Production",
-        "Logging:LogLevel:Default": "Critical",
-        "Logging:LogLevel:Microsoft": "Warning",
-        "Logging:LogLevel:Microsoft.Hosting.Lifetime": "Information"
+        "DOTNET_ENVIRONMENT": "Development"
       }
     }
   }
