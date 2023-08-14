@@ -1,9 +1,9 @@
-using Discord;
+﻿using Discord;
 using Discord.Addons.Hosting;
+using Discord.Interactions;
 using Discord.WebSocket;
-using Fergun.Interactive;
 using Microsoft.EntityFrameworkCore;
-using Template.Data;
+using Template;
 using Template.Services;
 
 var host = Host.CreateDefaultBuilder()
@@ -16,14 +16,11 @@ var host = Host.CreateDefaultBuilder()
     {
         config.SocketConfig = new DiscordSocketConfig
         {
-            LogLevel = LogSeverity.Debug,
-            // Enable the setting below to cache users.
-            AlwaysDownloadUsers = false,
-            // The setting below allows application to get the reactions or content of a message.
-            MessageCacheSize = 0,
-            // Configure more privileged intents at https://discord.com/developers/applications.
+            LogLevel = LogSeverity.Verbose,
             GatewayIntents = GatewayIntents.AllUnprivileged,
-            LogGatewayIntentWarnings = false
+            LogGatewayIntentWarnings = false,
+            UseInteractionSnowflakeDate = false,
+            AlwaysDownloadUsers = false,
         };
 
         config.Token = context.Configuration.GetSection(StartupOptions.Startup).Get<StartupOptions>().Token;
@@ -31,30 +28,30 @@ var host = Host.CreateDefaultBuilder()
     .UseInteractionService((context, config) =>
     {
         config.LogLevel = LogSeverity.Debug;
+        config.DefaultRunMode = RunMode.Async;
         config.UseCompiledLambda = true;
+    })
+    .UseInteractiveService((context, config) =>
+    {
+        config.LogLevel = LogSeverity.Critical;
+        config.DefaultTimeout = TimeSpan.FromMinutes(5);
+        config.ProcessSinglePagePaginators = true;
+    })
+    .ConfigureDatabase((context, options) =>
+    {
+        var connectionString = context.Configuration.GetConnectionString("Default");
+        var serverVersion = ServerVersion.AutoDetect(connectionString);
+
+        options.UseMySql(connectionString, serverVersion);
     })
     .ConfigureServices((context, services) =>
     {
-        InteractiveConfig interactiveConfig = new()
-        {
-            LogLevel = LogSeverity.Debug,
-            DeferStopPaginatorInteractions = true,
-            DefaultTimeout = TimeSpan.FromMinutes(5)
-        };
-
-        services.AddSingleton(interactiveConfig);
-        services.AddSingleton<InteractiveService>();
-
-        string? connectionString = context.Configuration.GetConnectionString("Default");
-
-        if (string.IsNullOrEmpty(connectionString))
-            throw new InvalidOperationException("The database connection string must be specified.");
-
-        ServerVersion serverVersion = ServerVersion.AutoDetect(connectionString);
-        services.AddDbContext<DatabaseContext>(options => options.UseMySql(connectionString, serverVersion));
-
-        services.AddHostedService<InteractionHandlingService>();
+        services
+            .AddSingleton<InteractionRouteService>()
+            .AddHostedService<CustomStatusService>()
+            .AddHostedService<InteractionHandlingService>();
     })
     .Build();
 
+await host.MigrateAsync();
 await host.RunAsync();
