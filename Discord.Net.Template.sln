@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "Template\Templa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Data", "Template.Data\Template.Data.csproj", "{7A2F5C58-BC1B-413E-A87E-C56AF5A194BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Tests", "Template.Tests\Template.Tests.csproj", "{E9F70A66-1C95-4709-8C53-0D1BB4A5030B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +23,10 @@ Global
 		{7A2F5C58-BC1B-413E-A87E-C56AF5A194BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A2F5C58-BC1B-413E-A87E-C56AF5A194BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A2F5C58-BC1B-413E-A87E-C56AF5A194BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F70A66-1C95-4709-8C53-0D1BB4A5030B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F70A66-1C95-4709-8C53-0D1BB4A5030B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F70A66-1C95-4709-8C53-0D1BB4A5030B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F70A66-1C95-4709-8C53-0D1BB4A5030B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
