@@ -1,9 +1,10 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.Template", "Template/Discord.Net.Template.csproj", "{A6F961D7-8A6A-453F-B4AB-FE86F2434030}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "Template\Template.csproj", "{8475E4F1-ABFA-413F-A5B6-1FD3D0D504BA}"
+EndProject
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6F961D7-8A6A-453F-B4AB-FE86F2434030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6F961D7-8A6A-453F-B4AB-FE86F2434030}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6F961D7-8A6A-453F-B4AB-FE86F2434030}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6F961D7-8A6A-453F-B4AB-FE86F2434030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8475E4F1-ABFA-413F-A5B6-1FD3D0D504BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8475E4F1-ABFA-413F-A5B6-1FD3D0D504BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8475E4F1-ABFA-413F-A5B6-1FD3D0D504BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8475E4F1-ABFA-413F-A5B6-1FD3D0D504BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
