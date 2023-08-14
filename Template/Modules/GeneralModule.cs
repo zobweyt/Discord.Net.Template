@@ -37,6 +37,6 @@ public class GeneralModule : ModuleBase
             .WithButton("Contribute", null, ButtonStyle.Link, Emotes.Logos.Github, _links.Github)
             .Build();
 
-        await FollowupAsync(embed: embed, components: components);
+        await RespondAsync(embed: embed, components: components);
     }
 }
