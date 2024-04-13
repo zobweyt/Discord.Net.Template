@@ -12,7 +12,5 @@ namespace Template.Data;
 public class TemplateDbContext(DbContextOptions<TemplateDbContext> options) : DbContext(options)
 {
     // TODO: Configure the database context.
-    // https://learn.microsoft.com/ef/core.
-    // https://learn.microsoft.com/ef/core/modeling/
-    // https://learn.microsoft.com/ef/core/dbcontext-configuration/
+    // Learn more at the https://learn.microsoft.com/ef/core.
 }
