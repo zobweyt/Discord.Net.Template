@@ -10,7 +10,7 @@ public class InteractionResultTests : TestsBase
     [Theory]
     [InlineData(null)]
     [InlineData("Success")]
-    public void InteractionResult_FromSuccess_Has_Null_Error(string? reason)
+    public void InteractionResult_FromSuccess_Has_Expected_Values(string? reason)
     {
         var result = InteractionResult.FromSuccess(reason);
 
@@ -21,7 +21,7 @@ public class InteractionResultTests : TestsBase
     [Fact]
     public void InteractionResult_FromError_Has_Expected_Reason()
     {
-        var reason = Faker.Lorem.Word();
+        var reason = Faker.Lorem.Sentence();
         var result = InteractionResult.FromError(reason);
 
         Assert.Equal(reason, result.ErrorReason);
