@@ -27,7 +27,7 @@ cd src/Template
 
 ### Step 2 — Configure the environment
 
-We are using the [options pattern](https://learn.microsoft.com/aspnet/core/fundamentals/configuration/options) for typed access to groups of [related settings](https://github.com/zobweyt/Discord.Net.Template/blob/main/src/Template/Common/Options). You should configure the [`appsettings.json`](https://github.com/zobweyt/Discord.Net.Template/blob/main/src/Template/appsettings.json) file or manage [user secrets](https://learn.microsoft.com/aspnet/core/security/app-secrets) via [CLI](https://learn.microsoft.com/dotnet/core/tools):
+We are using the [options pattern](https://learn.microsoft.com/aspnet/core/fundamentals/configuration/options) for typed access to groups of [related settings](./src/Template/Common/Options). You should configure the [`appsettings.json`](./src/Template/appsettings.json) file or manage [user secrets](https://learn.microsoft.com/aspnet/core/security/app-secrets) via [CLI](https://learn.microsoft.com/dotnet/core/tools):
 
 ```sh
 dotnet user-secrets set <key> <value>
