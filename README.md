@@ -51,7 +51,7 @@ Instead of using the `dotnet run` in production, create a deployment using the `
 
 Here's what you can also do:
 * Modify all instances of “template” to reflect your application's name.
-* Rewrite the [`README.md`](https://github.com/zobweyt/Discord.Net.Template/blob/main/README.md) file to fit your needs.
+* Rewrite the [`README.md`](README.md) file to fit your needs.
 * Follow the TODOs across the solution.
 
 ## 🧪 Testing
