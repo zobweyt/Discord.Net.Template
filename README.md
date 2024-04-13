@@ -1,43 +1,40 @@
 # Discord.Net.Template
 
-This repository is a fully maintained template for creating an advanced [Discord.NET](https://github.com/discord-net/Discord.Net) application using the [interaction framework](https://discordnet.dev/faq/int_framework/framework.html) and [Discord.Addons.Hosting](https://github.com/Hawxy/Discord.Addons.Hosting).
+This project is a template for creating advanced [Discord.Net](https://github.com/discord-net/Discord.Net) applications using the [interaction framework](https://discordnet.dev/faq/int_framework/framework) and [Discord.Addons.Hosting](https://github.com/Hawxy/Discord.Addons.Hosting) with .NET ecosystem.
 
-[![CurrentVersion](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://www.nuget.org/packages/Discord.Net)
-[![OpenIssues](https://img.shields.io/github/issues/zobweyt/Discord.NET-Template)](https://github.com/zobweyt/Discord.Net.Template/issues)
+The primary objective of this project is to provide a ready-to-use template that allows developers to quickly start coding bot commands without the need to configure the entire application setup.
+
+[![Version](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://www.nuget.org/packages/Discord.Net)
+[![OpenIssues](https://img.shields.io/github/issues/zobweyt/Discord.Net.Template)](https://github.com/zobweyt/Discord.Net.Template/issues)
 
 ## ☑️ Prerequisites
 
-* [.NET](https://dotnet.microsoft.com/en-us/download) – The software development kit.
-* [MySQL](https://dev.mysql.com/downloads/installer/) – The database provider used by this template.
+* The [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+* An app on the [developer portal](https://discord.com/developers)
+* A [server](https://support.discord.com/hc/articles/204849977) for the bot development
 
-## 📦 Installation
+## 📦 Usage
 
-To start using the application, open a command prompt and follow these instructions:
+To start, open a command prompt and follow these instructions:
 
-### Step 1 — Clone the repository
+### Step 1 — Get the template
 
-Get a local copy and navigate to the cloned repository:
+[Use](https://github.com/zobweyt/Discord.Net.Template/generate) this repository as a [template](https://docs.github.com/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), open it in your editor, and navigate to the startup project:
 
 ```sh
-git clone https://github.com/zobweyt/Discord.Net.Template.git
-cd Template/Template
+cd src/Template
 ```
 
 ### Step 2 — Configure the environment
 
-We are using the [options pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options) for strongly typed access to groups of related settings. You should configure the [`appsettings.json`](https://github.com/zobweyt/Discord.Net.Template/blob/main/Discord.Net.Template/appsettings.json) file or [manage user secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) via CLI:
+We are using the [options pattern](https://learn.microsoft.com/aspnet/core/fundamentals/configuration/options) for typed access to groups of [related settings](https://github.com/zobweyt/Discord.Net.Template/tree/main/Template/Common/Options). You should configure the [`appsettings.json`](https://github.com/zobweyt/Discord.Net.Template/blob/main/Discord.Net.Template/appsettings.json) file or manage [user secrets](https://learn.microsoft.com/aspnet/core/security/app-secrets) via [CLI](https://learn.microsoft.com/dotnet/core/tools):
 
 ```sh
 dotnet user-secrets set <key> <value>
 ```
 
-| Key                         | Type     | Description                                                                                          | Required |
-| --------------------------- | -------- | ---------------------------------------------------------------------------------------------------- | -------- |
-| `Links:Github`              | `string` | The URL to the open-source GitHub code of the application.                                           |          |
-| `Links:Discord`             | `string` | The URL to your Discord community server.                                                            |          |
-| `Startup:Token`             | `string` | The token obtained from the [Discord Developer Portal](https://discord.com/developers/applications). | &#9745;  |
-| `Startup:TestingGuildId`    | `ulong`  | The ID of your server in the Discord used for development purposes.                                  | &#9745;  |
-| `ConnectionStrings:Default` | `string` | The [connection string](https://www.connectionstrings.com/mysql) of your MySQL database.             | &#9745;  |
+> **Note:**
+You might also have noticed that there are several TODOs in the solution. They are not required to run and are designed to assist you with additional configuration.
 
 ### Step 3 — Run the application
 
@@ -48,7 +45,14 @@ dotnet run
 ```
 
 > **Warning:**
-Instead of using `dotnet run` to run application in production, create a deployment using the `dotnet publish` command and [deploy](https://discordnet.dev/guides/deployment/deployment.html) the published output.
+Instead of using the `dotnet run` in production, create a deployment using the `dotnet publish` command and [deploy](https://discordnet.dev/guides/deployment) the output.
+
+### Further customization
+
+Here's what you can also do:
+* Modify all instances of “template” to reflect your application's name.
+* Rewrite the [`README.md`](https://github.com/zobweyt/Discord.Net.Template/blob/main/README.md) file to fit your needs.
+* Follow the TODOs across the solution.
 
 ## 🧪 Testing
 
@@ -60,19 +64,12 @@ dotnet test
 
 ## 🚀 Contributing
 
-If you would like to contribute to this project, please read the [`CONTRIBUTING.md`](CONTRIBUTING.md) file. It provides details on our code of conduct and the process for submitting pull requests.
+To contribute to this project, please read the [`CONTRIBUTING.md`](CONTRIBUTING.md) file. It provides details on our code of conduct and the process for submitting pull requests.
 
 ## ❤️ Acknowledgments
 
-* [Discord.Net](https://github.com/discord-net/Discord.Net) – The Discord framework used.
-  * [Discord.Net.Template](https://github.com/zobweyt/Discord.Net.Template) – The application template used.
-  * [Discord.Addons.Hosting](https://github.com/Hawxy/Discord.Addons.Hosting) – Enables smooth execution of startup and background tasks.
-  * [Fergun.Interactive](https://github.com/d4n3436/Fergun.Interactive) – Adds interactive functionality to commands.
-* [Microsoft.EntityFrameworkCore](https://github.com/dotnet/efcore) – A modern object-database mapper.
-  * [Pomelo.EntityFrameworkCore.MySql](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql) – MySQL provider for Entity Framework Core.
-
-See also the list of [contributors](https://github.com/zobweyt/Discord.Net.Template/contributors) who participated in this project.
+See the [contributors](https://github.com/zobweyt/Discord.Net.Template/contributors) who participated in this project and the [dependencies](https://github.com/zobweyt/Discord.Net.Template/network/dependencies) used.
 
 ## 📜 License
 
-This project is licensed under the **MIT License** – see the [`LICENSE.md`](LICENSE.md) file for details.
+This project is licensed under the **MIT License** — see the [`LICENSE.md`](LICENSE.md) file for details.
