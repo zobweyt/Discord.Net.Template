@@ -33,8 +33,8 @@ We are using the [options pattern](https://learn.microsoft.com/aspnet/core/funda
 dotnet user-secrets set <key> <value>
 ```
 
-> **Note:**
-You might also have noticed that there are several TODOs in the solution. They are not required to run and are designed to assist you with additional configuration.
+> [!NOTE]
+> You might also have noticed that there are several TODOs in the solution. They are not required to run and are designed to assist you with additional configuration.
 
 ### Step 3 — Run the application
 
@@ -44,8 +44,8 @@ Pending database migrations will be applied automatically on startup:
 dotnet run
 ```
 
-> **Warning:**
-Instead of using the `dotnet run` in production, create a deployment using the `dotnet publish` command and [deploy](https://discordnet.dev/guides/deployment) the output.
+> [!WARNING]
+> Instead of using the `dotnet run` in production, create a deployment using the `dotnet publish` command and [deploy](https://discordnet.dev/guides/deployment) the output.
 
 ### Further customization
 
