@@ -9,9 +9,9 @@ The primary objective of this project is to provide a ready-to-use template that
 
 ## ☑️ Prerequisites
 
-* The [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-* An app on the [developer portal](https://discord.com/developers)
-* A [server](https://support.discord.com/hc/articles/204849977) for the bot development
+* The [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+* An app on the [developer portal](https://discord.com/developers).
+* A [server](https://support.discord.com/hc/articles/204849977) for the bot development.
 
 ## 📦 Usage
 
