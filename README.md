@@ -41,7 +41,7 @@ dotnet user-secrets set <key> <value>
 Pending database migrations will be applied automatically on startup:
 
 ```sh
-dotnet run
+dotnet watch
 ```
 
 > [!WARNING]
@@ -53,6 +53,9 @@ Here's what you can also do:
 * Modify all instances of “template” to reflect your application's name.
 * Rewrite the [`README.md`](README.md) file to fit your needs.
 * Follow the TODOs across the solution.
+
+> [!TIP]
+> Take a look at [discord-md-badge](https://github.com/gitlimes/discord-md-badge) which is a customizable badge that shows your or a bot account status, or a server invite.
 
 ## 🧪 Testing
 
