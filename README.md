@@ -34,32 +34,36 @@ dotnet user-secrets set <key> <value>
 ```
 
 > [!NOTE]
-> You might also have noticed that there are several TODOs in the solution. They are not required to run and are designed to assist you with additional configuration.
+> Pending database migrations are applied automatically [before startup](./src/Template/Program.cs#L49) and an informational [message](./src/Template/Extensions/HostExtensions.cs#L29) is logged.
 
 ### Step 3 — Run the application
 
-Pending database migrations will be applied automatically on startup:
+To run the bot, just execute the following command: 
 
 ```sh
 dotnet watch
 ```
 
+The initial setup is done. Enjoy using the template! 🎉
+
 > [!WARNING]
-> Instead of using the `dotnet run` in production, create a deployment using the `dotnet publish` command and [deploy](https://discordnet.dev/guides/deployment) the output.
+> Instead of using the `dotnet run` in production, create a deployment using the `dotnet publish` command and [deploy](https://docs.discordnet.dev/guides/deployment/deployment) the output.
 
-### Further customization
+## 🎨 Customization
 
-Here's what you can also do:
-* Modify all instances of “template” to reflect your application's name.
+Here is what you can also do:
+* Follow the TODO comments across the entire solution.
+* Find and replace all occurrences of "template" to fit your app's name.
 * Rewrite the [`README.md`](README.md) file to fit your needs.
-* Follow the TODOs across the solution.
 
 > [!TIP]
-> Take a look at [discord-md-badge](https://github.com/gitlimes/discord-md-badge) which is a customizable badge that shows your or a bot account status, or a server invite.
+> Take a look at the [discord-md-badge](https://github.com/gitlimes/discord-md-badge) project which is a customizable badge that shows your or a bot account status, or a server invite.
 
 ## 🧪 Testing
 
-This project utilizes the [xUnit](https://github.com/xunit/xunit) framework for creating test cases. It also incorporates [Moq](https://github.com/moq/moq) for mocking objects and [Bogus](https://github.com/bchavez/Bogus) to generate fake data. To run all the tests, execute the following command from the root directory in your command prompt:
+This project utilizes the [xUnit](https://github.com/xunit/xunit) framework for creating test cases. It also incorporates [Moq](https://github.com/moq/moq) for mocking objects and [Bogus](https://github.com/bchavez/Bogus) to generate fake data.
+
+To run all the [tests](./test), execute the following command from the root directory in your command prompt:
 
 ```sh
 dotnet test
