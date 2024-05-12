@@ -9,6 +9,20 @@
     <Version>1.0.0</Version>
   </PropertyGroup>
 
+  <PropertyGroup Condition="$(Configuration) == Release">
+    <DebugType>None</DebugType>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <SelfContained>true</SelfContained>
+    <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+    <TrimMode>partial</TrimMode>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(Configuration) == Release">
+    <TrimmerRootAssembly Include="Newtonsoft.Json" />
+  </ItemGroup>
+
   <ItemGroup>
     <Content Include="Properties\launchSettings.json" />
   </ItemGroup>
