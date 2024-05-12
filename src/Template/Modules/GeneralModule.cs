@@ -19,15 +19,15 @@ public class GeneralModule(IOptions<LinksOptions> options) : ModuleBase
             .WithDescription(app.Description)
             .AddField("Servers", Context.Client.Guilds.Count, true)
             .AddField("Latency", Context.Client.Latency + "ms", true)
-            .AddField("Version", Assembly.GetEntryAssembly().GetName().Version.ToString(3), true)
+            .AddField("Version", Assembly.GetEntryAssembly().GetName().Version, true)
             .WithAuthor(app.Owner.Username, app.Owner.GetDisplayAvatarUrl())
             .WithFooter(string.Join(" · ", app.Tags.Select(t => '#' + t)))
             .WithColor(Colors.Primary)
             .Build();
 
         var components = new ComponentBuilder()
-            .WithLink("Join", Emotes.Logos.Discord, Links.SupportServerUrl)
-            .WithLink("Contribute", Emotes.Logos.Github, Links.SourceRepositoryUrl)
+            .WithLink("Support", Emotes.Logos.Discord, Links.SupportServerUrl)
+            .WithLink("Source", Emotes.Logos.Github, Links.SourceRepositoryUrl)
             .Build();
 
         await RespondAsync(embed: embed, components: components);
