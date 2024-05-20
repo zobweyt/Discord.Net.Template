@@ -1,17 +1,22 @@
-# Discord.Net.Template
+<p align="center">
+  <a href="https://github.com/discord-net/Discord.Net">
+    <img width="100" src="https://github.com/zobweyt/Discord.Net.Template/assets/98274273/1e2e9a48-6b39-477a-a3cc-72359f0c91bc" alt="Discord.NET Logo" />
+  </a>
+</p>
 
-This project is a template for creating advanced [Discord.Net](https://github.com/discord-net/Discord.Net) applications using the [interaction framework](https://discordnet.dev/faq/int_framework/framework) and [Discord.Addons.Hosting](https://github.com/Hawxy/Discord.Addons.Hosting) with .NET ecosystem.
+<h1 align="center">
+  Discord.Net.Template
+</h1>
 
-The primary objective of this project is to provide a ready-to-use template that allows developers to quickly start coding bot commands without the need to configure the entire application setup.
+<p align="center">
+  A template for building scalable and ready for production <a href="https://github.com/discord-net/Discord.Net">Discord.NET</a> apps within the <a href="dotnet.microsoft.com">.NET</a> ecosystem.
+</p>
 
-[![Version](https://img.shields.io/myget/discord-net/v/Discord.Net)](https://www.nuget.org/packages/Discord.Net)
-[![OpenIssues](https://img.shields.io/github/issues/zobweyt/Discord.Net.Template)](https://github.com/zobweyt/Discord.Net.Template/issues)
-
-## ☑️ Prerequisites
-
-* The [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
-* An app on the [developer portal](https://discord.com/developers).
-* A [server](https://support.discord.com/hc/articles/204849977) for the bot development.
+<p align="center">
+  <img src="https://img.shields.io/librariesio/github/zobweyt/Discord.Net.Template" alt="Dependencies" />
+  <img src="https://img.shields.io/github/repo-size/zobweyt/Discord.Net.Template" alt="Size" />
+  <img src="https://img.shields.io/github/created-at/zobweyt/Discord.Net.Template" alt="Creation Date" />
+</p>
 
 ## 📦 Usage
 
