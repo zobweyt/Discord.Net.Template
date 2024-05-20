@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/discord-net/Discord.Net">
-    <img width="100" src="https://github.com/zobweyt/Discord.Net.Template/assets/98274273/1e2e9a48-6b39-477a-a3cc-72359f0c91bc" alt="Discord.NET Logo" />
+    <img width="100" src="https://github.com/zobweyt/Discord.Net.Template/assets/98274273/43b481b3-72b7-4669-98f7-74f41cf9e30b" alt="Discord.NET Logo" />
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-  A template for building scalable and ready for production <a href="https://github.com/discord-net/Discord.Net">Discord.NET</a> apps within the <a href="dotnet.microsoft.com">.NET</a> ecosystem.
+  A template for building scalable and ready for production <a href="https://docs.discordnet.dev">Discord.NET</a> apps within the <a href="dotnet.microsoft.com">.NET</a> ecosystem.
 </p>
 
 <p align="center">
