@@ -5,7 +5,8 @@ namespace Template;
 // TODO: Learn about the post-execution interaction results.
 
 /// <summary>
-/// Represents the result of an interaction used to handle it at the <a href="https://docs.discordnet.dev/guides/int_framework/post-execution">post-execution</a>.
+/// Represents the result of an interaction used to handle it at the
+/// <a href="https://docs.discordnet.dev/guides/int_framework/post-execution">post-execution</a>.
 /// </summary>
 /// <example>
 /// Here's how it might be used inside the commands:
@@ -15,10 +16,10 @@ namespace Template;
 /// public async Task<RuntimeResult> CreditsAsync()
 /// {
 ///     var app = await Context.Client.GetApplicationInfoAsync();
-/// 
+///
 ///     if (app.Team is null)
 ///         return InteractionResult.FromError("This app doesn't belong to a team!");
-/// 
+///
 ///     await RespondAsync($"Made by {Format.Bold(app.Team.Name)}.");
 ///     return InteractionResult.FromSuccess();
 /// }

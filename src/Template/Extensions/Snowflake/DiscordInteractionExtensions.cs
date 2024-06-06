@@ -12,7 +12,9 @@ public static class DiscordInteractionExtensions
     /// Handles the interaction by sending a response or follow-up message based on the <paramref name="result"/>.
     /// </summary>
     /// <param name="interaction">The interaction to handle.</param>
-    /// <param name="result">The result of an operation, which determines the style and description of the embed message.</param>
+    /// <param name="result">
+    /// The result of an operation, which determines the style and description of the embed message.
+    /// </param>
     /// <returns>A task representing the asynchronous operation.</returns>
     public static async Task HandleWithResultAsync(this IDiscordInteraction interaction, IResult result)
     {
