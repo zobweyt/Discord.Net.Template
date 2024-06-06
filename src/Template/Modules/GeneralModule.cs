@@ -1,33 +1,31 @@
 using System.Reflection;
-using Discord.Interactions;
 using Discord;
+using Discord.Interactions;
 using Microsoft.Extensions.Options;
 
 namespace Template.Modules;
 
-public class GeneralModule(IOptions<LinksOptions> options) : ModuleBase
+public class GeneralModule(IOptions<LinksOptions> links) : ModuleBase
 {
-    protected LinksOptions Links => options.Value;
-
     [SlashCommand("about", "Shows information about the app.")]
     public async Task AboutAsync()
     {
         var app = await Context.Client.GetApplicationInfoAsync();
-        
+
         var embed = new EmbedBuilder()
             .WithTitle(app.Name)
             .WithDescription(app.Description)
             .AddField("Servers", Context.Client.Guilds.Count, true)
             .AddField("Latency", Context.Client.Latency + "ms", true)
-            .AddField("Version", Assembly.GetEntryAssembly().GetName().Version, true)
+            .AddField("Version", Assembly.GetExecutingAssembly().GetName().Version, true)
             .WithAuthor(app.Owner.Username, app.Owner.GetDisplayAvatarUrl())
             .WithFooter(string.Join(" · ", app.Tags.Select(t => '#' + t)))
             .WithColor(Colors.Primary)
             .Build();
 
         var components = new ComponentBuilder()
-            .WithLink("Support", Emotes.Logos.Discord, Links.SupportServerUrl)
-            .WithLink("Source", Emotes.Logos.Github, Links.SourceRepositoryUrl)
+            .WithLink("Support", Emotes.Logos.Discord, links.Value.SupportServerUrl)
+            .WithLink("Source", Emotes.Logos.Github, links.Value.SourceRepositoryUrl)
             .Build();
 
         await RespondAsync(embed: embed, components: components);

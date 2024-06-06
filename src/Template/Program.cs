@@ -26,7 +26,7 @@ builder.Services.AddDiscordHost((config, _) =>
         AlwaysDownloadUsers = false,
     };
 
-    config.Token = builder.Configuration.GetSection(StartupOptions.Startup).Get<StartupOptions>().Token;
+    config.Token = builder.Configuration.GetSection(StartupOptions.Startup).Get<StartupOptions>()!.Token;
 });
 
 builder.Services.AddInteractionService((config, _) =>

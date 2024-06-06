@@ -7,19 +7,24 @@ using Microsoft.Extensions.Options;
 
 namespace Template.Services;
 
-internal sealed class InteractionHandler(DiscordSocketClient client, ILogger<InteractionHandler> logger, IServiceProvider provider, InteractionService service, IHostEnvironment environment, IOptions<StartupOptions> options) : DiscordClientService(client, logger)
+public class InteractionHandler(
+    DiscordSocketClient client,
+    ILogger<InteractionHandler> logger,
+    IServiceProvider provider,
+    InteractionService service,
+    IHostEnvironment environment,
+    IOptions<StartupOptions> options
+) : DiscordClientService(client, logger)
 {
-    private readonly ulong _devGuildId = options.Value.DevGuildId;
-
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         Client.Ready += RegisterCommandsAsync;
-        Client.InteractionCreated += InteractionCreated;
+        Client.InteractionCreated += OnInteractionCreated;
 
         await using var scope = provider.CreateAsyncScope();
         await service.AddModulesAsync(Assembly.GetEntryAssembly(), scope.ServiceProvider);
 
-        service.InteractionExecuted += InteractionExecuted;
+        service.InteractionExecuted += OnInteractionExecuted;
     }
 
     private async Task RegisterCommandsAsync()
@@ -37,20 +42,20 @@ internal sealed class InteractionHandler(DiscordSocketClient client, ILogger<Int
     private async Task RegisterCommandsLocallyAsync()
     {
         await Client.Rest.DeleteAllGlobalCommandsAsync();
-        await service.RegisterCommandsToGuildAsync(_devGuildId);
+        await service.RegisterCommandsToGuildAsync(options.Value.DevGuildId);
     }
 
     private async Task RegisterCommandsGloballyAsync()
     {
-        if (_devGuildId != 0)
-            await Client.Rest.BulkOverwriteGuildCommands([], _devGuildId);
+        if (options.Value.DevGuildId != 0)
+            await Client.Rest.BulkOverwriteGuildCommands([], options.Value.DevGuildId);
         else
-            Logger.LogWarning("Potential duplication of application commands detected.");
+            Logger.LogWarning("Possible duplicate commands detected.");
 
         await service.RegisterCommandsGloballyAsync();
     }
 
-    private async Task InteractionCreated(SocketInteraction interaction)
+    private async Task OnInteractionCreated(SocketInteraction interaction)
     {
         try
         {
@@ -63,7 +68,7 @@ internal sealed class InteractionHandler(DiscordSocketClient client, ILogger<Int
         }
     }
 
-    private async Task InteractionExecuted(ICommandInfo command, IInteractionContext context, IResult result)
+    private async Task OnInteractionExecuted(ICommandInfo command, IInteractionContext context, IResult result)
     {
         if (string.IsNullOrEmpty(result.ErrorReason))
             return;
