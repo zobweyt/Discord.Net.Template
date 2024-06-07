@@ -21,6 +21,10 @@ Please ensure that the documentation is kept up-to-date with any changes made to
 We attempt to conform to the [.NET Foundation's Coding Style](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.md)
 where possible.
 
+```sh
+dotnet format
+```
+
 *As a general rule, follow the coding style already set in the file you are editing, or look at a similar file if you are adding a new one.*
 
 ### Step 3 — Bump version
