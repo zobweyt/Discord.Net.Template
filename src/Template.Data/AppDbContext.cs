@@ -6,10 +6,10 @@ namespace Template.Data;
 /// An implementation of the <see cref="DbContext"/> for this solution.
 /// </summary>
 /// <remarks>
-/// Initializes a new instance of the <see cref="TemplateDbContext"/>.
+/// Initializes a new instance of the <see cref="AppDbContext"/>.
 /// </remarks>
 /// <param name="options">The options for this context.</param>
-public class TemplateDbContext(DbContextOptions<TemplateDbContext> options) : DbContext(options)
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     // TODO: Configure the database context.
     // Learn more at the https://learn.microsoft.com/ef/core.

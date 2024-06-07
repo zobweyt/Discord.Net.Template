@@ -14,7 +14,7 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddNamedOptions<StartupOptions>();
 builder.Services.AddNamedOptions<ReferenceOptions>();
 
-builder.Services.AddSqlite<TemplateDbContext>(builder.Configuration.GetConnectionString("Default"));
+builder.Services.AddSqlite<AppDbContext>(builder.Configuration.GetConnectionString("Default"));
 
 builder.Services.AddDiscordHost((config, _) =>
 {
@@ -47,5 +47,5 @@ builder.Services.AddHostedService<InteractionHandler>();
 
 var host = builder.Build();
 
-await host.MigrateAsync<TemplateDbContext>();
+await host.MigrateAsync<AppDbContext>();
 await host.RunAsync();
