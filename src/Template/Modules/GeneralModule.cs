@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace Template.Modules;
 
-public class GeneralModule(IOptions<LinksOptions> links) : ModuleBase
+public class GeneralModule(IOptions<ReferenceOptions> options) : ModuleBase
 {
     [SlashCommand("about", "Shows information about the app.")]
     public async Task AboutAsync()
@@ -24,8 +24,8 @@ public class GeneralModule(IOptions<LinksOptions> links) : ModuleBase
             .Build();
 
         var components = new ComponentBuilder()
-            .WithLink("Support", Emotes.Logos.Discord, links.Value.SupportServerUrl)
-            .WithLink("Source", Emotes.Logos.Github, links.Value.SourceRepositoryUrl)
+            .WithLink("Support", Emotes.Logos.Discord, options.Value.SupportServerUrl)
+            .WithLink("Source", Emotes.Logos.Github, options.Value.SourceRepositoryUrl)
             .Build();
 
         await RespondAsync(embed: embed, components: components);

@@ -11,8 +11,9 @@ Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddOptions<LinksOptions>().BindConfiguration(LinksOptions.Links).ValidateDataAnnotations().ValidateOnStart();
-builder.Services.AddOptions<StartupOptions>().BindConfiguration(StartupOptions.Startup).ValidateDataAnnotations().ValidateOnStart();
+builder.Services.AddNamedOptions<StartupOptions>();
+builder.Services.AddNamedOptions<ReferenceOptions>();
+
 builder.Services.AddSqlite<TemplateDbContext>(builder.Configuration.GetConnectionString("Default"));
 
 builder.Services.AddDiscordHost((config, _) =>
@@ -26,7 +27,7 @@ builder.Services.AddDiscordHost((config, _) =>
         AlwaysDownloadUsers = false,
     };
 
-    config.Token = builder.Configuration.GetSection(StartupOptions.Startup).Get<StartupOptions>()!.Token;
+    config.Token = builder.Configuration.GetSection(StartupOptions.GetSectionName()).Get<StartupOptions>()!.Token;
 });
 
 builder.Services.AddInteractionService((config, _) =>

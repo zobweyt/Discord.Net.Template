@@ -41,7 +41,7 @@ dotnet user-secrets set <key> <value>
 > [!NOTE]
 > Pending database migrations are applied automatically [before startup](./src/Template/Program.cs#L49) and an informational [message](./src/Template/Extensions/HostExtensions.cs#L29) is logged.
 
-### Step 3 — Run the application
+### Step 3 — Run the app
 
 To run the bot, just execute the following command: 
 

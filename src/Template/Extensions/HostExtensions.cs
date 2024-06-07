@@ -11,7 +11,7 @@ public static class HostExtensions
     /// Asynchronously applies any pending migrations for the specified database context.
     /// </summary>
     /// <typeparam name="TDbContext">The type of the database context to apply migrations for.</typeparam>
-    /// <param name="host">The host that provides access to the application's services.</param>
+    /// <param name="host">The host that provides access to the app's services.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     public static async Task MigrateAsync<TDbContext>(this IHost host)
         where TDbContext : DbContext

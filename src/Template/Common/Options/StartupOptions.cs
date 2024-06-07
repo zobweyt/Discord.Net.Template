@@ -1,22 +1,24 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Template;
 
 /// <summary>
-/// The startup options associated with this application.
+/// Represents the startup options associated with this app.
 /// </summary>
-public class StartupOptions
+public class StartupOptions : INamedOptions
 {
-    /// <summary>
-    /// The path to the configuration section.
-    /// </summary>
-    public const string Startup = nameof(Startup);
+    public static string GetSectionName() => "Startup";
 
     /// <summary>
-    /// The Discord application token obtained from the https://discord.com/developers/applications.
+    /// The Discord app token obtained from the https://discord.com/developers/applications.
     /// </summary>
+    [Required]
     public required string Token { get; init; }
 
     /// <summary>
-    /// The ID of a server in the Discord used for development of this application.
+    /// The ID of a server in Discord used for development of this app.
     /// </summary>
-    public ulong DevGuildId { get; init; }
+    [Required]
+    [RegularExpression("[^0].*", ErrorMessage = "The ID must not be zero")]
+    public required ulong DevGuildId { get; init; }
 }
