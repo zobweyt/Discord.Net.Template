@@ -57,9 +57,9 @@ The initial setup is done. Enjoy using the template! 🎉
 ## 🎨 Customization
 
 Here is what you can also do:
-* Follow the TODO comments across the entire solution.
-* Find and replace all occurrences of "template" to fit your app's name.
-* Rewrite the [`README.md`](README.md) file to fit your needs.
+- [ ] Follow the TODO comments across the entire solution.
+- [ ] Find and replace all occurrences of "template" to fit your app's name.
+- [ ] Rewrite the [`README.md`](README.md) file to fit your needs.
 
 > [!TIP]
 > Take a look at the [discord-md-badge](https://github.com/gitlimes/discord-md-badge) project which is a customizable badge that shows your or a bot account status, or a server invite.
