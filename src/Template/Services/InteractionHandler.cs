@@ -47,11 +47,7 @@ public class InteractionHandler(
 
     private async Task RegisterCommandsGloballyAsync()
     {
-        if (options.Value.DevGuildId != 0)
-            await Client.Rest.BulkOverwriteGuildCommands([], options.Value.DevGuildId);
-        else
-            Logger.LogWarning("Possible duplicate commands detected.");
-
+        await Client.Rest.BulkOverwriteGuildCommands([], options.Value.DevGuildId);
         await service.RegisterCommandsGloballyAsync();
     }
 
